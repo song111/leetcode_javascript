@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>1.两数之和</title>
+</head>
+
+<body>
+    <script>
+        // 方法一：双循环
+        /**
+         * @param {number[]} nums
+         * @param {number} target
+         * @return {number[]}
+         */
+        var twoSum1 = function (nums, target) {
+            for (let i = 0; i < nums.length; i++) {
+                for (let j = i + 1; j < nums.length; j++) {
+                    if (nums[i] + nums[j] === target) {
+                        return [i, j]
+                    }
+                }
+            }
+        };
+
+
+
+        // 方法二： 数组方法检查，单循环
+        /**
+         * @param {number[]} nums
+         * @param {number} target
+         * @return {number[]}
+         */
+        var twoSum2 = function (nums, target) {
+            let result = []
+            nums.forEach((num, i) => {
+                if (num < target && nums.includes((target - num))) {
+                    const index = nums.indexOf((target - num))
+                    if (index !== i) { result = [i, index] }
+                }
+            })
+            return result
+        };
+
+
+        // 测试： [2,7,11,15]  9
+      console.log(twoSum1([2,7,11,15],9))  
+      console.log(twoSum2([2,7,11,15],9))  
+
+
+
+
+    </script>
+</body>
+
+</html>
