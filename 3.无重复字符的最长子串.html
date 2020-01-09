@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>3. 无重复字符的最长子串</title>
+</head>
+
+<body>
+    <script>
+        // 思考：利用窗口滑动的方式来进行测试查找最大子字符串
+        /**
+     * @param {string} s
+     * @return {number}
+     */
+        var lengthOfLongestSubstring = function (s) {
+            if (s.length === 0) return 0
+            const length = s.length
+            let subStr = s[0]
+            let subMaxLength = 1
+            let i = 0
+            let j = 1
+            while (j < length) {
+                if (subStr.includes(s[j])) {
+                    // 假如现有的子字符串包含下一个字符则重新从当前字符开始
+                    const index = subStr.indexOf(s[j]) + 1  // 需要截取的位置
+                    subStr = subStr.slice(index)
+                    i = i + index
+                } else {
+                    // 假如不包含则加进来
+                    subMaxLength = Math.max(subMaxLength, (j + 1 - i))
+                }
+                subStr += s[j]
+                j++
+            }
+
+            return subMaxLength
+        };
+
+
+        console.log(lengthOfLongestSubstring('abcabcbb'))
+        console.log(lengthOfLongestSubstring('bbbbb'))
+        console.log(lengthOfLongestSubstring('dvdf'))
+    </script>
+</body>
+
+</html>
