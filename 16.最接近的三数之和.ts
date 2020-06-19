@@ -36,9 +36,13 @@ var threeSumClosest = function (nums: number[], target: number): number {
       if (Math.abs(target - sum) < Math.abs(target - closest)) {
         closest = sum;
       }
-      if (target > sum) start++;
-      else if (target < sum) end--;
-      else return closest;
+      if (target > sum) {
+        start++;
+        continue;   // 假如不是最优解就直接继续下一个
+      } else if (target < sum) {
+        end--;
+        continue;
+      } else return closest;
     }
   }
 
