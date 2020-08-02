@@ -49,5 +49,5 @@ var lengthOfLongestSubstring = function (s: string) {
 };
 
 console.log(lengthOfLongestSubstring("abcabcbb"));
-console.log(lengthOfLongestSubstring("bbbbb"));
-console.log(lengthOfLongestSubstring("dvdf"));
+// console.log(lengthOfLongestSubstring("bbbbb"));
+// console.log(lengthOfLongestSubstring("dvdf"));
