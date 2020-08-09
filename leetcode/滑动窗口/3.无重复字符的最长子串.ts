@@ -51,3 +51,6 @@ var lengthOfLongestSubstring = function (s: string) {
 console.log(lengthOfLongestSubstring("abcabcbb"));
 // console.log(lengthOfLongestSubstring("bbbbb"));
 // console.log(lengthOfLongestSubstring("dvdf"));
+
+
+export {}  // 忽略代码，为了解决ts 中重复变量问题

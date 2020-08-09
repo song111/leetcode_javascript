@@ -38,3 +38,5 @@ const lengthOfLongestSubstring = (s: string) => {
 };
 
 console.log(lengthOfLongestSubstring("abcabcdbb"));
+
+export {}  // 忽略代码，为了解决ts 中重复变量问题
