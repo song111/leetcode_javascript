@@ -15,7 +15,7 @@
 -10^4 <= target <= 10^4
 
 */
-import quickSort from '../排序/快速排序';
+import quickSort from '../../排序/快速排序';
 
 /**
  * @param {number[]} nums
