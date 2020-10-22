@@ -43,27 +43,41 @@ const longestPalindrome1 = function (s: string) {
 
 // console.log(longestPalindrome1('abacdfgdcaba'))
 
-
-
-// 动态规划
+// 动态规划 ： 从两头向中间找
+// 1.当i===j-1 表示长度为1是边界条件
+// 2.从最大字符串的开始找最大回文不需要专门记录下来最大的
 /**
  * @param {string} s
  * @return {string}
  */
 const longestPalindrome2 = function (s: string) {
-  if (s.length <2) return s;
+  if (s.length < 2) return s;
+  let db: boolean[][] = [[]];
   let begin = 0;
-  let maxLength = 2;
-  for (let i = 0; i < s.length - 1; i++) {
-    for (let j = i + 1; j <= s.length; j++) {
-      const str = s.slice(i, j); // 优化截取 转化为存储下标
-      if (validPalindrome(str) && str.length > maxLength) {
-        begin = i;
-        maxLength = str.length;
+  let maxLength = 1;
+
+  for (let i = s.length - 1; i >= 0; i--) {
+    db[i] = [];
+    for (let j = i; j <= s.length; j++) {
+      if (j - i === 0) db[i][j] = true;
+      if (s[i] !== s[j]) {
+        db[i][j] = false;
       } else {
-        continue;
+        if (j - i < 3) {
+          db[i][j] = true;
+        } else {
+          db[i][j] = db[i + 1][j - 1];
+        }
+      }
+
+      if (db[i][j] && j - i + 1 > maxLength) {
+        begin = i;
+        maxLength = j - i ;
       }
     }
   }
-  return s.substring(begin, begin + maxLength);
+
+  return s.slice(begin, maxLength + begin + 1);
 };
+
+console.log(longestPalindrome2("babad"));
