@@ -54,10 +54,11 @@ const longestPalindrome2 = function (s: string) {
   if (s.length < 2) return s;
   let db: boolean[][] = [[]];
   let begin = 0;
-  let maxLength = 1;
+  let maxLength = 0;
 
   for (let i = s.length - 1; i >= 0; i--) {
     db[i] = [];
+
     for (let j = i; j <= s.length; j++) {
       if (j - i === 0) db[i][j] = true;
       if (s[i] !== s[j]) {
@@ -81,3 +82,5 @@ const longestPalindrome2 = function (s: string) {
 };
 
 console.log(longestPalindrome2("babad"));
+
+console.log(longestPalindrome2("ba"));
